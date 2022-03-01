@@ -1,6 +1,6 @@
 # Learn-TypeScript, Let's Start
 <hr>
-<br><br>
+
 ### 2022.03.01
 📃 TypeScript 란?
 - [공식 문서]('https://www.typescriptlang.org/')
