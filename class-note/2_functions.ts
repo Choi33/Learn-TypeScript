@@ -18,7 +18,6 @@ function final(a:number,b:number): number{
 function log(a: string, b?: string){
     
 }
-
 log("start")
 log("go","ts!")
 // ?를 붙여 해당 파라미터 값이 선택적이라는걸 알려줌. 
