@@ -27,8 +27,32 @@
 
 <br><br>
 📃 interface
-``` interface info{
-  name:string;
-  age:number;
-}```
-object 구성이 복잡할 때 interface를 통해 선언하고 이를 활용할 수 있음.
+``` interface
+ interface info{
+ 	name:string;
+  	age:number;
+}
+```
+
+- object 구성이 복잡할 때 interface를 통해 선언하고 이를 활용할 수 있음.
+
+- 함수에 응용할 수 있음
+
+``` interface
+ interface info{
+ 	name:string;
+  	age:number;
+}
+
+function getUser(user:User){
+    console.log(user);
+}
+
+const capt={
+    age : 100,
+    name:'캡틴'
+}
+
+getUser(capt); 
+
+```
