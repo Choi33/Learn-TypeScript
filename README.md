@@ -56,3 +56,58 @@ const capt={
 getUser(capt); 
 
 ```
+
+- 함수 구조에 인터페이스 사용
+
+```interface
+interface SumFunciton{
+    (a:number, b:number): number;
+}
+
+let total:SumFunciton;
+
+total=function(a:number, b:number){
+    return a+b;
+}
+```
+
+* 인덱스로 접근
+
+```interface-index
+interface StringArray{
+    [index : number]: string;
+}
+
+// arr가 StringArray 타입일 때
+// arr[0]=10 하면 에러 발생
+```
+
+- 딕셔너리 타입
+
+```interface-dir
+interface StringRegexDictionary{
+    //RegExp : 정규표현식
+    [key:string]: RegExp;
+    // key의 타입이 string,value는 RegExp
+}
+
+let obj: StringRegexDictionary={
+    //sth=something
+    sth:/abc/,
+    cssFile:/\.css$/
+}
+```
+
+- 인터페이스 확장
+
+```interface-extend
+interface Person{
+    name:string;
+    age:number;
+}
+
+interface Developer extends Person{
+    language:string;
+}
+```
+
