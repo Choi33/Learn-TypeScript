@@ -110,4 +110,25 @@ interface Developer extends Person{
     language:string;
 }
 ```
+<br><br>
+📃 type
+```type
+type Person={
+    name:string;
+    age : number;
+}
+
+const seho: Person = {
+    name:'seho',
+    age : 25
+}
+```
+- type으로 지정 시, type 형식에 마우스 커서를 올리면 type의 구조를 바로 알 수 있다.
+![type](/img/type.png)
+<br><br>
+📃 type vs interface
+- type : 정의한 타입에 대해 나중에 쉽게 참고할 수 있도록 이름을 부여하는 것 (위의 이미지처럼 vscode의 프리뷰로 볼 수 있음 인터페이스는 그냥 interface 변수명 만 뜬다.)
+- 두개의 큰 차이점은 확장 여부. type은 확장 <strong>불가능</strong> 그렇기 때문에 <strong>인터페이스로 선언하여 사용하는 것을 추천</strong>
+- 좋은 소프트웨어는 확장에 용이해야한다.
+
 
