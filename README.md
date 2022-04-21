@@ -10,7 +10,7 @@
 📃 왜 TypeScript를 써야하는가?
 - 에러 사전 방지 <br>
     - 만약 이런 함수가 있다고 생각해보자. <br>
-    ``` 
+    ``` typescript
     fucntion sum(a,b){
         return a+b
     }
@@ -27,7 +27,7 @@
 
 <br><br>
 📃 interface
-``` interface
+``` typescript
  interface info{
  	name:string;
   	age:number;
@@ -38,7 +38,7 @@
 
 - 함수에 응용할 수 있음
 
-``` interface
+``` typescript
  interface info{
  	name:string;
   	age:number;
@@ -59,7 +59,7 @@ getUser(capt);
 
 - 함수 구조에 인터페이스 사용
 
-```interface
+```typescript
 interface SumFunciton{
     (a:number, b:number): number;
 }
@@ -73,7 +73,7 @@ total=function(a:number, b:number){
 
 * 인덱스로 접근
 
-```interface-index
+```typescript
 interface StringArray{
     [index : number]: string;
 }
@@ -84,7 +84,7 @@ interface StringArray{
 
 - 딕셔너리 타입
 
-```interface-dir
+```typescript
 interface StringRegexDictionary{
     //RegExp : 정규표현식
     [key:string]: RegExp;
@@ -100,7 +100,7 @@ let obj: StringRegexDictionary={
 
 - 인터페이스 확장
 
-```interface-extend
+```typescript
 interface Person{
     name:string;
     age:number;
@@ -112,7 +112,7 @@ interface Developer extends Person{
 ```
 <br><br>
 📃 type
-```type
+```typescript
 type Person={
     name:string;
     age : number;
@@ -124,11 +124,73 @@ const seho: Person = {
 }
 ```
 - type으로 지정 시, type 형식에 마우스 커서를 올리면 type의 구조를 바로 알 수 있다.
-![type](/img/type.png)
-<br><br>
+  ![type](/img/type.png)
+
+<br>
+
+<br>
+
 📃 type vs interface
+
 - type : 정의한 타입에 대해 나중에 쉽게 참고할 수 있도록 이름을 부여하는 것 (위의 이미지처럼 vscode의 프리뷰로 볼 수 있음 인터페이스는 그냥 interface 변수명 만 뜬다.)
 - 두개의 큰 차이점은 확장 여부. type은 확장 <strong>불가능</strong> 그렇기 때문에 <strong>인터페이스로 선언하여 사용하는 것을 추천</strong>
 - 좋은 소프트웨어는 확장에 용이해야한다.
 
+<br>
 
+<br>
+
+📃 Union
+
+- 하나 이상의 타입을 사용하고 싶은 경우
+
+```typescript
+function logMessage(value: string | number){
+    console.log(value)
+}
+
+logMessage('message');
+logMessage(100)
+```
+
+- any와 다르게, 타입을 여러개 지정하면 조건문을 통해 타입을 지정해주면 그 타입에 맞는 API를 추천해준다. 예를 들어 if (typeof value==='number') 일 경우, 해당 조건문 안에서 value는 자연스럽게 number로 지정되고 number에서 사용할 수 있는 API를 추천해준다. (타입가드)
+
+```typescript
+function logMessage(value: string | number){
+    if (typeof value==='number'){
+        value.toLocaleString();
+    }
+    if (typeof value==='string'){
+        value.toString();
+    }
+    throw new TypeError('value must be string or number')
+}
+
+```
+
+- union 타입으로 interface 선언 후 사용 시 공통적으로 가지는 속성값만 반환해준다. 
+
+  (Devloper 도 될 수 있고 Person도 될 수 있어서, typeof로 타입 가드를 할 경우 skill과 age도 사용 가능하다.)
+
+```typescript
+interface Developer{
+    name:string;
+    skill:string;
+}
+
+interface Person{
+    name:string;
+    age:number;
+}
+
+function askSomeone(someone:Developer | Person){
+    someone.name;
+}
+
+```
+
+<br>
+
+<br>
+
+📃 
