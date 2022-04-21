@@ -193,4 +193,91 @@ function askSomeone(someone:Developer | Person){
 
 <br>
 
-📃 
+📃 Intersection Type (&)
+
+- 모든 타입을 만족하는 타입을 생성
+
+```typescript
+function andSomeone(someone: Developer & Person){
+    someone.name
+    someone.age
+    someone.skill
+}
+```
+
+▶ somone은 Developer와 Person의 속성을 전부 가지는 새로운 타입으로 생성됨.
+
+<br>
+
+<br>
+
+📃 Union VS Intersection
+
+- 실무에서는 상대적으로 Union이 잘 쓰임
+
+```typescript
+function newAskSomeone(someone:Developer | Person){
+    someone.name;
+}
+
+newAskSomeone({name:'디벨로퍼', skill:'웹'})
+newAskSomeone({name:'김개발', age:20})
+
+function newAndSomeone(someone: Developer & Person){
+    someone.name
+    someone.age
+    someone.skill
+}
+
+newAndSomeone({name:'나개발',age:30,skill:'안드로이드'})
+```
+
+<br>
+
+<br>
+
+📃 Enums
+
+- 특정 값들의 집합을 의미하는 자료형
+- 특별히 값을 지정하지 않으면 숫자형 enum으로 처리
+
+![enum](D:\Project\강의\TypeScript\Learn-TypeScript\img\enum.PNG)
+
+▶ 출력하면 0이 나옴, 숫자가 아닌 다른걸로 나오게 만들고 싶으면 값을 지정하면 된다.
+
+```typescript
+enum Shoes{
+    Nike='나이키',
+    Adidas='아디다스'
+}
+
+let myShoes=Shoes.Nike;
+console.log(myShoes);
+```
+
+- 활용
+
+▶ 예를 들어, Yes나 y나 예스나 전부 YES로 인식하고 싶을때 enum을 사용하면 편하다.
+
+```typescript
+enum Answer {
+    Yes='Y',
+    No='N'
+}
+
+function askQuestion(answer: Answer) {
+    if (answer===Answer.Yes){
+        console.log('정답')
+    }
+    if (answer===Answer.No){
+        console.log('오답')
+    }
+}
+
+askQuestion(Answer.Yes)
+```
+
+<br>
+
+<br>
+
