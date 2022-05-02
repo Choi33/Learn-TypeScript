@@ -241,7 +241,7 @@ newAndSomeone({name:'나개발',age:30,skill:'안드로이드'})
 - 특정 값들의 집합을 의미하는 자료형
 - 특별히 값을 지정하지 않으면 숫자형 enum으로 처리
 
-![enum](D:\Project\강의\TypeScript\Learn-TypeScript\img\enum.PNG)
+![enum](.\img\enum.PNG)
 
 ▶ 출력하면 0이 나옴, 숫자가 아닌 다른걸로 나오게 만들고 싶으면 값을 지정하면 된다.
 
@@ -281,3 +281,63 @@ askQuestion(Answer.Yes)
 
 <br>
 
+📃 제네릭 (Generics)
+
+- 기본 문법
+
+```typescript
+function logText<T>(text:T):T {
+    console.log(text);
+    return text;
+}
+
+logText<number>(10);
+```
+
+- 함수 중복 선언의 단점을 보완
+
+```typescript
+function logText(text : string){
+    console.log(text);
+    text.split('').reverse().join('');
+    return text;
+}
+logText('a');
+
+function logNumber(num:number){
+    console.log(num);
+    return num;
+}
+logNumber(10);
+```
+
+▶ `logText`와 `logNumber` 같은 로직을 가지고 있지만  type만 다름 → 가독성이 떨어지고 유지보수가 힘들어짐.
+
+- 중복선언 - 유니온으로 해결?
+
+```typescript
+function logText(text : string | number){
+    console.log(text);
+    return text;
+}
+
+logText('a');
+logText(10);
+```
+
+▶ `text`에 뭔가 적용하려면, `string`와 `number`에 동시에 적용되는 함수만 `preview`로 보여줌 
+
+▶ `text`에 `string`을 넣어도 `string`에 쓰이는 `split` 같은 함수는 사용 하지 못함 (error 발생) → string과 number에서 공통적으로 사용할 수 있는 함수만 사용 가능
+
+- 예제
+
+```typescript
+function logText<T>(text: T): T{
+    console.log(text);
+    return text;
+}
+const str = logText<string>('a');
+str.split('');
+```
+
+▶ 함수의 타입이 `T` 로 선언되어있지만, 함수 사용시 `string`으로 타입을 지정하게 되면 타입스크립트 내부에서 `string` 타입으로 인식함.
