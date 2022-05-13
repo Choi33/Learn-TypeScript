@@ -338,6 +338,7 @@ function logText<T>(text: T): T{
 }
 const str = logText<string>('a');
 str.split('');
+// str이 문자열이기 때문에 문자열에서 쓸 수있는 split 함수 사용 가능
 ```
 
 ▶ 함수의 타입이 `T` 로 선언되어있지만, 함수 사용시 `string`으로 타입을 지정하게 되면 타입스크립트 내부에서 `string` 타입으로 인식함.
